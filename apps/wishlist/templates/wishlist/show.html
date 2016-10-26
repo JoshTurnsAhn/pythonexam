@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <title>Item</title>
+      {% load staticfiles %}
+      <link rel="stylesheet" href="{% static 'wishlist/css/style.css' %}">
+      </script>
+    </head>
+  <body>
+    {% for item in items %}
+    <h1>{{item.name}}</h1>
+      Added by: {{item.users.name}}
+    Added on {{item.created_at}}
+    <h3>Users who added this product/item under their wish list:</h3>
+  </div>
+<ul>
+{% for user in item.join.all %}
+<li>{{user.name}}</li>
+{% endfor %}
+</ul>
+  {% endfor %}
+  <form class="" action="{% url 'loginreg:logout' %}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Logout">
+  </form>
+  <a href="{% url 'wishlist:index' %}"><input type="submit" name="Home" value="Go Back"></a>
+  </body>
+</html>
